@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 
 function App() {
@@ -12,11 +12,11 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://www.youtube.com/channel/UCWR5dG9sg5du-Zhq23m9kYA"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Aveti Tutorials
         </a>
       </header>
     </div>
