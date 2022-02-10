@@ -1,18 +1,17 @@
-#base image
-FROM node:12.18.2
-
-# set working directory
-RUN mkdir /usr/src/app
-#copy all files from current directory to docker
-COPY . /usr/src/app
-
-WORKDIR /usr/src/app
-
-# install and cache app dependencies
+#Stage 1
+#building docker image for react app
+FROM node:12.18.2 as build-stage
+RUN mkdir /usr/app
+COPY . /usr/app
+WORKDIR /usr/app
 RUN yarn
-
-# add `/usr/src/app/node_modules/.bin` to $PATH
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
+RUN npm run build
 
-# start app
-CMD ["npm", "start"]
+#Stage 2
+FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
+COPY --from=build-stage /usr/app/build .
+ENTRYPOINT [ "nginx" , "-g" ,"daemon off;"]
+
