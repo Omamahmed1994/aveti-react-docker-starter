@@ -23,6 +23,6 @@ jobs:
         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     
     - name: Build the docker image 
-      run: docker build . --tag omamahmed/aveti-react-docker-starter_react-nginx-app:$(date +%s)
+      run: docker build . --tag aveti-react-docker-starter_react-nginx-app:$(date +%s)
     - name: Docker push to docker hub
-      run: docker push ${{secrets.DOCKER_USERNAME}}/omamahmed/aveti-react-docker-starter_react-nginx-app:1.0.2
+      run: docker push ${{secrets.DOCKER_USERNAME}}/omamahmed/aveti-react-docker-starter_react-nginx-app1:1.0.2
